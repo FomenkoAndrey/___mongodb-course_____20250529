@@ -8,9 +8,6 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 3000
 
-console.log(process.env.MONGODB_URI)
-console.log(process.env.DB_NAME)
-
 app.use(express.json())
 app.use('/', userRoutes)
 app.use(errorHandler)
