@@ -14,11 +14,6 @@ yarn add express
 https://www.npmjs.com/package/mongodb
 yarn add mongodb
 
-## Встановлюємо пакет body-parser
-
-https://www.npmjs.com/package/body-parser
-yarn add body-parser
-
 ## Встановлюємо пакет dotenv
 
 https://www.npmjs.com/package/dotenv
