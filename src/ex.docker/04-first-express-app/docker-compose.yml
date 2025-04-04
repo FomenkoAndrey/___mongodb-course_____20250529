@@ -1,0 +1,16 @@
+services:
+  app:
+    image: my-express-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx nodemon -L src/app.mjs
+    # command: node ./bin/www
+    restart: unless-stopped

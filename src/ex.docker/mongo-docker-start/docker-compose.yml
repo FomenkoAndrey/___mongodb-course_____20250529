@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://root:example@mongo_main:27017/admin
+      DB_NAME: mainDB
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx nodemon -L src/app.mjs
+    depends_on:
+      - mongo_main
+
+  mongo_main:
+    image: mongo:latest
+    command: ['mongod', '--quiet', '--logpath', '/dev/null']
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./db:/data/db

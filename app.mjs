@@ -7,6 +7,6 @@
 // import './src/ex.7.cursor-vs-array/index1.mjs'
 // import './src/ex.8.sort-limit-page/index1.mjs'
 // import './src/ex.9.aggregation/index1.mjs'
-import './src/ex.10.indexes/index17.mjs'
+// import './src/ex.10.indexes/index17.mjs'
 // import './src/ex.11.geospatial-queries/index1.mjs'
-// import './src/ex.12.explain/index1`.mjs'
+// import './src/ex.12.explain/index1.mjs'
