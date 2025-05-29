@@ -31,18 +31,18 @@ async function run() {
     ]
     const insertManyResult = await db.collection('users').insertMany(users)
     console.log(chalk.greenBright('П\'ять документів вставлено у колекцію "users".'))
-    console.log(chalk.bgRedBright('insertManyResult:'), insertManyResult)
+    console.log(chalk.black.bgRedBright('insertManyResult:'), insertManyResult)
 
     const updateManyResult = await db
       .collection('users')
       .updateMany(
         { name: /John/ },
-        { $set: { name: 'Piter', age: 29, sex: 'male' } },
+        { $set: { name: 'Piter', age: 29, gender: 'male' } },
         { upsert: true }
       )
 
     console.log(chalk.blueBright('Документи оновлено у колекції "users".'))
-    console.log(chalk.bgRedBright('updateManyResult:'), updateManyResult)
+    console.log(chalk.black.bgRedBright('updateManyResult:'), updateManyResult)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)

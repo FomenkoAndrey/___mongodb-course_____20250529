@@ -36,7 +36,7 @@ async function run() {
     const documents = await db
       .collection('users')
       .find({
-        age: { $mod: [2, 0] }
+        age: { $mod: [5, 0] }
       })
       .toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)

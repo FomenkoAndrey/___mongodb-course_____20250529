@@ -20,7 +20,7 @@ async function run() {
     const result = await db.collection('users').insertOne({ name: 'John Doe', age: 30 })
     console.log(chalk.greenBright('One document has been inserted into "users" collection.'))
 
-    console.log(chalk.bgRedBright('result:'), result)
+    console.log(chalk.black.bgRedBright('result:'), result)
 
     const stats = await db.command({ collStats: 'users' })
     console.log(chalk.blueBright('Number of documents in the "users" collection:'), stats.count)

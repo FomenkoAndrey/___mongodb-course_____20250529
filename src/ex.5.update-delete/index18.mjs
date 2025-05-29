@@ -31,7 +31,7 @@ async function run() {
     ]
     const insertManyResult = await db.collection('users').insertMany(users)
     console.log(chalk.greenBright('П\'ять документів вставлено у колекцію "users".'))
-    console.log(chalk.bgRedBright('insertManyResult:'), insertManyResult)
+    console.log(chalk.black.bgRedBright('insertManyResult:'), insertManyResult)
 
     const deleteResult = await db
       .collection('users')
@@ -40,7 +40,7 @@ async function run() {
       )
 
     console.log(chalk.redBright('Документи з "Doe" у імені видалено.'))
-    console.log(chalk.bgRedBright('deleteResult:'), deleteResult)
+    console.log(chalk.black.bgRedBright('deleteResult:'), deleteResult)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)

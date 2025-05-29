@@ -50,7 +50,7 @@ async function run() {
     console.log(chalk.magentaBright('Зміст колекції "users", що містить "Doe" або "doe":'), documents2)
 
     const document = await db.collection('users').findOne({
-      name: /Doe/
+      name: /Doe/i
     })
     console.log(chalk.magentaBright('Перший документ, що містить "Doe":'), document)
 

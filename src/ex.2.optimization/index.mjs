@@ -3,7 +3,7 @@ import userRoutes from './routes/userRoutes.mjs'
 import { errorHandler } from './middlewares/errorMiddleware.mjs'
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config({ path: './.env.local' })
 
 const app = express()
 const PORT = process.env.PORT || 3000

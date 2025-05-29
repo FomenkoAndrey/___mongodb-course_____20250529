@@ -26,11 +26,11 @@ async function run() {
 
     const result1 = await db.collection('users').insertOne({ _id: commonId, name: 'John Doe', age: 30 })
     console.log(chalk.greenBright('Перший документ вставлено у колекцію "users".'))
-    console.log(chalk.bgRedBright('result1:'), result1)
+    console.log(chalk.black.bgRedBright('result1:'), result1)
 
     const result2 = await db.collection('users').insertOne({ _id: commonId, name: 'Jane Smith', age: 25 })
     console.log(chalk.greenBright('Другий документ вставлено у колекцію "users".'))
-    console.log(chalk.bgRedBright('result2:'), result2)
+    console.log(chalk.black.bgRedBright('result2:'), result2)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)

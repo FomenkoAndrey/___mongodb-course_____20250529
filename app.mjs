@@ -4,7 +4,7 @@
 // import './src/ex.4.insert-delete-drop/index1.mjs'
 // import './src/ex.5.update-delete/index1.mjs'
 // import './src/ex.6.find-projection/index1.mjs'
-// import './src/ex.7.cursor-vs-array/index1.mjs'
+import './src/ex.7.cursor-vs-array/index1.mjs'
 // import './src/ex.8.sort-limit-page/index1.mjs'
 // import './src/ex.9.aggregation/index1.mjs'
 // import './src/ex.10.indexes/index17.mjs'

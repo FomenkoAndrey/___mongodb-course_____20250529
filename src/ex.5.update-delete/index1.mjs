@@ -28,7 +28,7 @@ async function run() {
       skills: ['HTML', 'CSS', 'JS']
     })
     console.log(chalk.greenBright('Документ вставлено у колекцію "users".'))
-    console.log(chalk.bgRedBright('insertResult:'), insertResult)
+    console.log(chalk.black.bgRedBright('insertResult:'), insertResult)
 
     const updateResult = await db
       .collection('users')
@@ -38,7 +38,7 @@ async function run() {
       )
 
     console.log(chalk.blueBright('Документ оновлено у колекції "users".'))
-    console.log(chalk.bgRedBright('updateResult:'), updateResult)
+    console.log(chalk.black.bgRedBright('updateResult:'), updateResult)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)

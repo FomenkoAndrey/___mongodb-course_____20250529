@@ -27,7 +27,7 @@ async function run() {
 
     console.log(chalk.greenBright(usersToInsert.length + ' documents have been inserted into "users" collection.'))
 
-    console.log(chalk.bgRedBright('result:'), result)
+    console.log(chalk.black.bgRedBright('result:'), result)
 
     const stats = await db.command({ collStats: 'users' })
     console.log(chalk.blueBright('Number of documents in the "users" collection:'), stats.count)

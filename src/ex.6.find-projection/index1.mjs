@@ -33,7 +33,7 @@ async function run() {
     await db.collection('users').insertMany(users)
     console.log(chalk.greenBright('П\'ять документів вставлено у колекцію "users".'))
 
-    // ? const documents = await db.collection('users').find().toArray()
+    // ?                                          .find()
     const documents = await db.collection('users').find({}).toArray()
 
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)
