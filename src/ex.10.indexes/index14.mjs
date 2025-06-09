@@ -38,7 +38,7 @@ async function run() {
     await usersCollection.dropIndex('person.first_1')
     await usersCollection.dropIndex('person.last_1')
     await usersCollection.dropIndex('city_1')
-    console.log(chalk.bgRedBright('Indexes have been dropped.'))
+    console.log(chalk.black.bgRedBright('Indexes have been dropped.'))
 
     const updatedIndexes = await usersCollection.indexes()
     console.log(chalk.magentaBright('Indexes of the users collection after dropping:'), updatedIndexes)

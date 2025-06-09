@@ -39,7 +39,7 @@ async function run() {
     const checkStatsAndClose = async () => {
       const stats = await db.command({ collStats: 'logs' })
       console.log(chalk.redBright(`Size of the collection: ${stats.size} bytes`))
-      console.log(chalk.bgRedBright(`Number of documents in the collection: ${stats.count}`))
+      console.log(chalk.black.bgRedBright(`Number of documents in the collection: ${stats.count}`))
       console.log('Wait +10 seconds...')
 
       if (stats.size === 0 && stats.count === 0) {

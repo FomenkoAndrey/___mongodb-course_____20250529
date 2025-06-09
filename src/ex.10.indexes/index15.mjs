@@ -26,6 +26,8 @@ async function run() {
     await usersCollection.createIndex({ 'person.first': 1 }, { background: true })
     await usersCollection.createIndex({ 'person.last': 1 }, { background: true })
     await usersCollection.createIndex({ city: 1 }, { background: true })
+    // ! unique index on email
+    await usersCollection.createIndex({ email: 1 }, { unique: true })
     console.log(chalk.greenBright('Indexes have been created.'))
 
     const indexes = await usersCollection.indexes()
@@ -45,14 +47,14 @@ async function run() {
       await usersCollection.insertOne(user1)
       console.log(chalk.greenBright('User 1 inserted'))
     } catch (e) {
-      console.log(chalk.bgRedBright('Error inserting User 1:'), e.message)
+      console.log(chalk.black.bgRedBright('Error inserting User 1:'), e.message)
     }
 
     try {
       await usersCollection.insertOne(user2)
-      console.log(chalk.bgGreenBright('User 2 inserted'))
+      console.log(chalk.black.bgGreenBright('User 2 inserted'))
     } catch (e) {
-      console.log(chalk.bgRedBright('Error inserting User 2:'), e.message)
+      console.log(chalk.black.bgRedBright('Error inserting User 2:'), e.message)
     }
 
     await client.close()

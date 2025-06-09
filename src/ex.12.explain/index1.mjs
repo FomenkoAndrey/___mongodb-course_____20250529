@@ -41,7 +41,7 @@ async function run() {
       .explain('executionStats')
 
     // ! вимкнути
-    // console.log(chalk.magenta('Explain results:'), explainResult)
+    console.log(chalk.magenta('Explain results:'), explainResult)
     console.log(chalk.magenta('Explain results -> parseQuery:'), explainResult.queryPlanner['parsedQuery'])
     console.log(chalk.magenta('Explain results -> winningPlan:'), explainResult.queryPlanner['winningPlan'])
 

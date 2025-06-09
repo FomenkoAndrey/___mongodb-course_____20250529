@@ -45,7 +45,7 @@ async function run() {
 
     const indexSize = stats.indexSizes['orders.count_1']
 
-    console.log(chalk.bgRedBright('Size of the "orders.count" index in bytes:'), indexSize)
+    console.log(chalk.black.bgRedBright('Size of the "orders.count" index in bytes:'), indexSize)
 
     await client.close()
   } catch (error) {

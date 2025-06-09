@@ -33,10 +33,10 @@ const ordersCount = db.customers.find(
 print('Documents with orders:', ordersCount)
 
 // ! size: 421888 bytes
-// db.customers.createIndex({ orders: 1 })
+db.customers.createIndex({ orders: 1 })
 
 // ! size: 106496 bytes - for sparse index
-db.customers.createIndex({ orders: 1 }, { sparse: true })
+// db.customers.createIndex({ orders: 1 }, { sparse: true })
 
 const indexStats = db.customers.stats().indexSizes
 

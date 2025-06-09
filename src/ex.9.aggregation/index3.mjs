@@ -80,5 +80,6 @@ run()
 { name: 'Bob Doe',  skills: 'HTML' }
 { name: 'Bob Doe',  skills: 'CSS' }
 { name: 'Bob Doe',  skills: 'JavaScript' }
+{ name: 'Bob Doe',  skills: 'Node.js' }
 
  */

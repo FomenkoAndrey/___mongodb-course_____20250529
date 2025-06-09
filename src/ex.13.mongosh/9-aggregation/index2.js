@@ -6,7 +6,7 @@ db.createCollection('customers')
 
 const orders = []
 
-for (let i = 0; i < 10000; i++) {
+for (let i = 0; i < 1000; i++) {
   orders.push({
     product: faker.product(),
     user: {

@@ -40,7 +40,7 @@ async function run() {
     console.log(chalk.greenBright('П\'ять документів вставлено у колекцію "users".'))
 
     const documents = await db.collection('users').find({}).toArray()
-    // cursor.forEach()
+
     for (const document of documents) {
       await db.collection('logs').insertOne({
         loggedAt: new Date(),

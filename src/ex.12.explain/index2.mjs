@@ -28,7 +28,7 @@ async function run() {
     console.log(chalk.greenBright('Documents are inserted into the "users" collection.'))
 
     console.log(chalk.greenBright('Creating index on "age"...'))
-    await usersCollection.createIndex({ age: 1 })
+    await usersCollection.createIndex({ city: 1 })
 
     const indexes = await usersCollection.indexes()
     console.log(chalk.magenta('Indexes of the users collection:'), indexes)

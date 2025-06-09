@@ -24,7 +24,7 @@ async function run() {
     const restaurantQuery = { location: { $geoWithin: { $geometry: neighborhoodResult.geometry } } }
     const restaurants = await restaurantsCollection.find(restaurantQuery, { _id: false, name: true }).toArray()
     console.log(
-      chalk.bgRedBright('Restaurants within the neighborhood:'),
+      chalk.black.bgRedBright('Restaurants within the neighborhood:'),
       restaurants.slice(0, 5),
       `\n... and ${restaurants.length - 5} other restaurants`
     )

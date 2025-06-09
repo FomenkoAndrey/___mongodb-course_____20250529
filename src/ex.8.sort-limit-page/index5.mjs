@@ -14,7 +14,6 @@ async function runPaginationExample() {
     console.log(chalk.greenBright('Connected to Database'))
 
     const db = client.db(dbName)
-    const itemsPerPage = 10
 
     const collections = await db.listCollections({}, { nameOnly: true }).toArray()
     const usersCollectionExists = collections.some((col) => col.name === 'users')
@@ -27,6 +26,7 @@ async function runPaginationExample() {
     await db.collection('users').insertMany(users)
 
     const totalDocuments = await db.collection('users').countDocuments({})
+    const itemsPerPage = 10
     const pages = Math.ceil(totalDocuments / itemsPerPage)
 
     for (let page = 0; page < pages; page++) {
