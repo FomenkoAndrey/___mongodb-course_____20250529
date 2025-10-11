@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -32,17 +32,13 @@ async function run() {
 
     const replaceResult = await db
       .collection('users')
-      .replaceOne(
-        { _id: insertResult.insertedId },
-        { name: 'Bob Woo', age: 41 }
-      )
+      .replaceOne({ _id: insertResult.insertedId }, { name: 'Bob Woo', age: 41 })
 
     console.log(chalk.blueBright('Документ замінено у колекції "users".'))
     console.log(chalk.black.bgRedBright('replaceResult:'), replaceResult)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)
-
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
   } finally {

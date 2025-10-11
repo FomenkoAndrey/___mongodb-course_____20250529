@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -33,18 +33,13 @@ async function run() {
     console.log(chalk.greenBright('П\'ять документів вставлено у колекцію "users".'))
     console.log(chalk.black.bgRedBright('insertManyResult:'), insertManyResult)
 
-    const deleteResult = await db
-      .collection('users')
-      .deleteOne(
-        { name: /Doe/ }
-      )
+    const deleteResult = await db.collection('users').deleteOne({ name: /Doe/ })
 
     console.log(chalk.redBright('Документи з "Doe" у імені видалено.'))
     console.log(chalk.black.bgRedBright('deleteResult:'), deleteResult)
 
     const documents = await db.collection('users').find({}).toArray()
     console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)
-
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
   } finally {

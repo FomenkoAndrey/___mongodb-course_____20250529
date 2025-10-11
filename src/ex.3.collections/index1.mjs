@@ -14,7 +14,7 @@ async function run() {
     const db = client.db(dbName)
     const collections = await db.listCollections().toArray()
     console.log('Collections:', collections)
-    
+
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
   } finally {

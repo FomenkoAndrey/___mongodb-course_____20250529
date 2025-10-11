@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
@@ -14,8 +14,13 @@ async function run() {
 
     const db = client.db(dbName)
 
-    await db.collection('users').drop()
-    console.log(chalk.redBright('Collection "users" has been dropped.'))
+    const collections = await db.listCollections({ name: 'users' }).toArray()
+    if (collections.length > 0) {
+      await db.collection('users').drop()
+      console.log(chalk.redBright('Collection "users" has been dropped.'))
+    } else {
+      console.log(chalk.yellowBright('Collection "users" does not exist. Skipping drop.'))
+    }
 
     const usersToInsert = [
       { name: 'John Doe', age: 30 },
@@ -27,14 +32,21 @@ async function run() {
 
     const numberNames = ['Перший', 'Другий', 'Третій', 'Четвертий', "П'ятий"]
 
+    // Створюємо ОДИН спільний _id для всіх документів (демонстрація проблеми!)
+    const commonId = new ObjectId()
+    console.log(chalk.yellowBright('\n⚠️  Увага: Використовується ОДИН _id для всіх документів!\n'))
+
     for await (const [index, user] of usersToInsert.entries()) {
-      const result = await db.collection('users').insertOne(user)
+      const result = await db.collection('users').insertOne({
+        _id: commonId,
+        ...user
+      })
       console.log(chalk.greenBright(`${numberNames[index]} документ вставлено у колекцію "users".`))
       console.log(chalk.black.bgRedBright(`result${index + 1}:`), result)
     }
 
     const documents = await db.collection('users').find({}).toArray()
-    console.log(chalk.magentaBright('Contents of the "users" collection:'), documents)
+    console.log(chalk.magentaBright('\nContents of the "users" collection:'), documents)
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
   } finally {

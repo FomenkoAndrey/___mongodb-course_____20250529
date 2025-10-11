@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -32,10 +32,7 @@ async function run() {
 
     const updateResult = await db
       .collection('users')
-      .updateOne(
-        { _id: insertResult.insertedId },
-        { $set: { name: 'Jonathan Woo', age: 41 } }
-      )
+      .updateOne({ _id: insertResult.insertedId }, { $set: { name: 'Jonathan Woo', age: 41 } })
 
     console.log(chalk.blueBright('Документ оновлено у колекції "users".'))
     console.log(chalk.black.bgRedBright('updateResult:'), updateResult)

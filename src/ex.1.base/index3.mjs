@@ -32,7 +32,7 @@ async function run() {
 
     app.get('/users', async (req, res) => {
       try {
-        const usersList = await users.find().toArray()
+        const usersList = await users.find({}).toArray()
         res.status(200).json(usersList)
       } catch (error) {
         console.error('Error retrieving users:', error)
