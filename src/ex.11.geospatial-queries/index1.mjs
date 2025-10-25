@@ -3,7 +3,7 @@ import { readFile } from 'fs/promises'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function loadData(collectionName, fileName) {
   const client = new MongoClient(process.env.MONGODB_URI)

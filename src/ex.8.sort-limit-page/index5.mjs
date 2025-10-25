@@ -27,9 +27,9 @@ async function runPaginationExample() {
 
     const totalDocuments = await db.collection('users').countDocuments({})
     const itemsPerPage = 10
-    const pages = Math.ceil(totalDocuments / itemsPerPage)
+    const pagesCount = Math.ceil(totalDocuments / itemsPerPage)
 
-    for (let page = 0; page < pages; page++) {
+    for (let page = 0; page < pagesCount; page++) {
       console.log(chalk.yellow(`============================= Page: ${page + 1} =============================`))
 
       const documents = await db

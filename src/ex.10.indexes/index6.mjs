@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import chalk from 'chalk'
 import { users } from '../helpers/fakeUsers.mjs'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -33,7 +33,7 @@ async function run() {
     const indexes = await usersCollection.indexes()
     console.log(chalk.cyanBright('Indexes of the users collection:'), indexes)
 
-    const countQuery = { 'orders.count': { $gt: 5 } }
+    const countQuery = { 'orders.count': { $gt: 8 } }
     const usersWithOrders = await usersCollection.find(countQuery).toArray()
     console.log(
       chalk.blueBright('Users with more than 8 orders:'),

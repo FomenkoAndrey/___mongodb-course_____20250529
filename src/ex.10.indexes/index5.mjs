@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import chalk from 'chalk'
 import { users } from '../helpers/fakeUsers.mjs'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -38,10 +38,7 @@ async function run() {
 
     const sortingOrder = { 'person.first': 1, 'person.last': -1 }
 
-    const results = await usersCollection
-      .find(query)
-      .sort(sortingOrder)
-      .toArray()
+    const results = await usersCollection.find(query).sort(sortingOrder).toArray()
     console.log('Users with first name John, sorted by last name in descending order:', results)
 
     await client.close()

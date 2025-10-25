@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -27,7 +27,7 @@ async function run() {
       { name: 'Bob doe', age: 25, skills: ['Python', 'Node.js', 'React', 'Django'] },
       { name: 'John Doe', age: 35, skills: ['Java', 'Spring', 'Node.js'] },
       { name: 'Jack Daniels', age: 40 },
-      { name: 'Jonny Walker', age: 21, skills: ['JavaScript', 'React', 'Node.js'] }
+      { name: 'Jonny Walker', age: 21, skills: ['JavaScript', 'Node.js'] }
     ]
 
     await db.collection('users').insertMany(users)

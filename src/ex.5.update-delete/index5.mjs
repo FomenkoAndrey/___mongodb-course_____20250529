@@ -26,7 +26,7 @@ async function run() {
       { name: 'Bob Doe', age: 30, skills: ['HTML', 'CSS', 'JS'] },
       { name: 'Jane Woo', age: 25, skills: ['Python', 'Django'] },
       { name: 'Mary Boo', age: 35, skills: ['Java', 'Spring'] },
-      { name: 'Jack Daniels', age: 40, skills: ['C#', '.NET'] },
+      { name: 'John Daniels', age: 40, skills: ['C#', '.NET'] },
       { name: 'Jonny Walker', age: 45, skills: ['JavaScript', 'React'] }
     ]
     const insertManyResult = await db.collection('users').insertMany(users)

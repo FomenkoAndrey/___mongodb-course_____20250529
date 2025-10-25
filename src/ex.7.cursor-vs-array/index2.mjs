@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -37,7 +37,7 @@ async function run() {
 
     while (await cursor.hasNext()) {
       const document = await cursor.next()
-      console.log(document)
+      console.log('Отримано через курсор:', document)
     }
 
   } catch (error) {

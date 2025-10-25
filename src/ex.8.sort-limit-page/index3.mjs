@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -58,7 +58,7 @@ async function run() {
 run()
 
 /*
- ! Без skip та без limit:
+ ! Тільки sort (без skip та без limit):
  [
    { name: 'Jonny Walker', age: 21 },
    { name: 'Jane Doe', age: 25 },
@@ -70,7 +70,7 @@ run()
    { name: 'John Doe', age: 55 }
  ]
 
- ! skip:
+ ! sort + skip:
  [
    ~ { name: 'Jonny Walker', age: 21 },
    ~ { name: 'Jane Doe', age: 25 },
@@ -82,7 +82,7 @@ run()
    { name: 'John Doe', age: 55 }
  ]
 
- ! skip + limit:
+ ! sort + skip + limit:
  [
    ~ { name: 'Jonny Walker', age: 21 },
    ~ { name: 'Jane Doe', age: 25 },

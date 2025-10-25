@@ -2,10 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config({
-  debug: false,
-  quiet: true
-})
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)

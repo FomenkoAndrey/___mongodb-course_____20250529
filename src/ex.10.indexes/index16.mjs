@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import chalk from 'chalk'
 import { users } from '../helpers/fakeUsers.mjs'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)

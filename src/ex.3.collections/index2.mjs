@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -28,7 +28,7 @@ async function run() {
 
     existingCollections = (await db.listCollections().toArray()).map((c) => c.name)
     console.log('Collections after actions:', existingCollections)
-    
+
   } catch (error) {
     console.error('Error connecting to MongoDB:', error)
   } finally {

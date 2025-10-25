@@ -1,6 +1,7 @@
 load('../random.js')
 
 db.customers.drop()
+db.reports.drop()
 db.backup.drop()
 
 db.createCollection('customers')

@@ -4,25 +4,39 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '${APP_PORT}:${APP_PORT}'
     environment:
       NODE_ENV: development
-      MONGODB_URI: mongodb://root:example@mongo_main:27017/admin
-      DB_NAME: mainDB
+      MONGODB_URI: ${MONGODB_URI}
+      DB_NAME: ${DB_NAME}
     volumes:
       - .:/app
       - /app/node_modules
     command: npx nodemon -L src/app.mjs
     depends_on:
       - mongo_main
+    restart: unless-stopped
+    networks:
+      - main
 
   mongo_main:
     image: mongo:latest
     command: ['mongod', '--quiet', '--logpath', '/dev/null']
     ports:
-      - '27017:27017'
+      - '${MONGO_PORT}:${MONGO_PORT}'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: ${MAIN_DB_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MAIN_DB_ROOT_PASS}
     volumes:
       - ./db:/data/db
+      - ./.volume/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local

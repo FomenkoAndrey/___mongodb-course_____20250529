@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import chalk from 'chalk'
 import { users } from '../helpers/fakeUsers.mjs'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -44,6 +44,15 @@ async function run() {
     console.log(chalk.magenta('Explain results:'), explainResult)
     console.log(chalk.magenta('Explain results -> parseQuery:'), explainResult.queryPlanner['parsedQuery'])
     console.log(chalk.magenta('Explain results -> winningPlan:'), explainResult.queryPlanner['winningPlan'])
+    // console.log(chalk.magenta('Explain results -> executionStats:'), explainResult.executionStats)
+    console.log(
+      chalk.magenta('Explain results -> totalKeysExamined:'),
+      explainResult.executionStats['totalKeysExamined']
+    )
+    console.log(
+      chalk.magenta('Explain results -> totalDocsExamined:'),
+      explainResult.executionStats['totalDocsExamined']
+    )
 
     await client.close()
   } catch (error) {

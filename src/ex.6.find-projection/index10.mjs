@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -36,7 +36,7 @@ async function run() {
     const documents = await db
       .collection('users')
       .find({
-        age: { $in: [25, 37] }
+        age: { $in: [25, 37, 30] }
       })
       .toArray()
     console.log(chalk.magentaBright('Вік дорівнює 25 або 37:'), documents)

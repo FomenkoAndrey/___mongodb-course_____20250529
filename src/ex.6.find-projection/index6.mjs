@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
 
-dotenv.config()
+dotenv.config({ quiet: true })
 
 async function run() {
   const client = new MongoClient(process.env.MONGODB_URI)
@@ -24,7 +24,7 @@ async function run() {
 
     const users = [
       { name: 'John Doe', age: 30, skills: ['HTML', 'CSS', 'JS', 'Node.js'] },
-      { name: 'Bob doe', age: 25, skills: ['Python', 'Node.js', 'Django'] },
+      { name: 'Bob doe', age: 27, skills: ['Python', 'Node.js', 'Django'] },
       { name: 'John Doe', age: 15, skills: ['Java', 'Spring', 'Node.js'] },
       { name: 'Jack Daniels', age: 40 },
       { name: 'Jonny Walker', age: 21, skills: ['JavaScript', 'React', 'Node.js'] }
